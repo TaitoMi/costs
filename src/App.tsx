@@ -1,26 +1,30 @@
 import React from 'react';
-import logo from './logo.svg';
 import { Title } from './components/my-title/my-title';
-import './App.css';
+import { Header } from './components/header/Header';
+import { Accumulation } from './components/accumulation/Accumulation';
+import { Costs } from './components/costs/Costs';
+import 'semantic-ui-css/semantic.min.css'
+import styles from './styles.module.scss';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from 'react-router-dom'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <Title>It's my title</Title>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className={styles.app}>
+      <Router>
+        <Header/>
+        <Switch>
+          <Route path='/accumulation'>
+            <Accumulation />
+          </Route>
+          <Route path='/costs'>
+            <Costs />
+          </Route>
+        </Switch>
+      </Router>
     </div>
   );
 }
